@@ -7,7 +7,7 @@ newbuild="5.6.3.0.43.0-T9"
 echo " the old build number is $oldbuild and new build number is $newbuild
 echo " the old env is $oldenv and new env is $newenv
 
-sed -ie "s/\b$oldbuild\b/$newbuild/" manifest.xml
+sed -i "s/\b$oldbuild\b/$newbuild/" manifest.xml
 
 git branch
 git add manifest.xml
