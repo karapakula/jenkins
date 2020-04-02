@@ -1,7 +1,7 @@
 
 oldbuild="$(cat manifest.xml | grep fileUri | grep ear | cut -f8 -d '/')"
 oldenv="$(cat manifest.xml | grep fileUri | grep ear | cut -f7 -d '/')"
-newenv="dev2"
+newenv="dev3"
 newbuild="5.6.3.0.43.0-T9"
 
 echo " the old build number is $oldbuild and new build number is $newbuild
