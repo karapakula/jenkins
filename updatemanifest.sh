@@ -1,4 +1,7 @@
 
+cd jenkins
+git stash
+
 oldbuild="$(cat manifest.xml | grep fileUri | grep ear | cut -f8 -d '/')"
 oldenv="$(cat manifest.xml | grep fileUri | grep ear | cut -f7 -d '/')"
 newenv="dev3"
