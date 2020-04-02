@@ -19,7 +19,7 @@
       <preScannedPlaceholders>true</preScannedPlaceholders>
       <placeholders />
       <checksum>eb45e78f8d0512d042c1d34a5bcbab0e8221ee1e</checksum>
-      <fileUri>https://repo.td.com/repository/3rd-party-raw/cml-etreasury/dev3/5.6.3.0.43.0-T9/EP_UOB_5630430T8_cml_dev2-1.0.0.ear</fileUri>
+      <fileUri>https://repo.td.com/repository/3rd-party-raw/cml-etreasury/dev2/5.6.3.0.43.0-T8/EP_UOB_5630430T8_cml_dev2-1.0.0.ear</fileUri>
       <targetPath>/tmp/xldeploy</targetPath>
       <targetPathShared>true</targetPathShared>
       <createTargetPath>true</createTargetPath>
@@ -41,7 +41,7 @@
       <preScannedPlaceholders>true</preScannedPlaceholders>
       <placeholders />
       <checksum>d3de46c39dc42c3dec9724a01de338bb1d31ec55</checksum>
-      <fileUri>https://repo.td.com/repository/3rd-party-raw/cml-etreasury/dev3/5.6.3.0.43.0-T9/Config_UOB_5630430T8_cml_dev2-1.0.0.jar</fileUri>
+      <fileUri>https://repo.td.com/repository/3rd-party-raw/cml-etreasury/dev2/5.6.3.0.43.0-T8/Config_UOB_5630430T8_cml_dev2-1.0.0.jar</fileUri>
       <targetPath>/tmp/xldeploy</targetPath>
       <targetPathShared>true</targetPathShared>
       <createTargetPath>true</createTargetPath>
