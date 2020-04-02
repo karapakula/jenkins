@@ -11,5 +11,5 @@ sed -ie "s/\b$oldbuild\b/$newbuild/" manifest.xml
 
 git branch
 git add manifest.xml
-git commit -am " adding new build number $newbuild and new region $newenv
+git commit -am " adding new build number $newbuild and new region $newenv"
 git push
