@@ -1,0 +1,47 @@
+##### Purpose: Proxy failover configuration to work with jenkins
+##### Author : Narendra Karapakula | narendra.karapakula@mphasis.com
+
+
+
+####################################/etc/nginx/conf.d/jenkins.conf  ############################################
+#
+#          loadbalancer
+#               http://proxyserverhostname/
+#           /                   \
+#Jenkins-Master                         Jenkins-DR
+#jenkins-primary:8080   jenkins-dr:8081
+#   (active)                    (passive)
+#
+###################################################
+
+    upstream backend {
+       server gpsd-jenkins-primary:8080 fail_timeout=1s max_fails=1;          # active node
+       server gpsd-jenkins-dr:8081 backup;                             # passive node
+    }
+
+
+server {
+        listen   80;
+        server_name  gpsd-devops-ci.rdeadmin.waters.com;
+        access_log            /var/log/nginx/jenkins.access.log;
+        error_log            /var/log/nginx/jenkins.error.log;
+        ignore_invalid_headers off;
+
+        location / {
+                sendfile off;
+                proxy_pass http://backend;
+                proxy_http_version 1.1;
+                        proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;
+                        proxy_redirect http://gpsd-jenkins-primary:8080 $scheme://gpsd-devops-ci.rdeadmin.waters.com;
+                        proxy_redirect http://gpsd-jenkins-dr:8081 $scheme://gpsd-devops-ci.rdeadmin.waters.com;
+                        proxy_connect_timeout   90;
+                        proxy_next_upstream error timeout invalid_header http_500;
+                        proxy_set_header    Host                $host;
+                        proxy_set_header    X-Real-IP       $remote_addr;
+                        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+                        proxy_set_header    X-Forwarded-Proto http;
+        }
+
+        }
+
+#####################################################################################################
