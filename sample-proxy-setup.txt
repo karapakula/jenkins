@@ -1,0 +1,32 @@
+##### Organization: 
+##### Team:   - Devops
+##### Purpose: Install webserver on Ubuntu VM with Proxy failover configuration to work with jenkins
+##### Maintainer:    - Devops Team
+##### Author : Narendra Karapakula | 
+
+
+## update and upgrade repo
+sudo apt update -y && sudo apt upgrade -y
+
+#install webserver
+sudo apt install nginx -y
+
+#Open firewall to HTTP requests
+
+sudo ufw allow 'Nginx HTTP'
+
+##Stop Proxy server to configure
+sudo systemctl stop nginx
+
+##Configure Proxy with jenkins master/slave setup
+sudo mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default_bkp
+cp -rp jenkins-proxy.txt /etc/nginx/conf.d/jenkins.conf
+cp -rp  -devops-ci_nginx_config.txt /etc/nginx/conf.d/jenkins.conf
+
+
+
+#comment out the default sites location of webserver
+sudo sed -ie '/sites-enabled/ s/^#*/#/' /etc/nginx/nginx.conf
+
+#start the proxy server
+sudo systemctl start nginx
